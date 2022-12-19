@@ -23,8 +23,8 @@ jobs:
         REPO: ingest-ms
       run: |
         docker build -t $REPO .
-        docker tag $REPO:latest tibildocker/$REPO
-        docker push tibildocker/$REPO:latest
+        docker tag $REPO:1 tibildocker/$REPO:1
+        docker push tibildocker/$REPO
 
     - name: Docker pull image and deploy from hub
       env:
