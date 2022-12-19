@@ -1,0 +1,106 @@
+{
+    "properties": [
+      {
+        "ingestion_type": "event",
+        "input": {
+          "type": "object",
+          "properties": {
+            "event_name": {
+              "type": "string"
+            },
+            "event": {
+              "type": "object",
+              "properties": {
+                "school_id": {
+                  "type": "string"
+                },
+                "grade": {
+                  "type": "string"
+                },
+                "count": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "school_id",
+                "grade",
+                "count"
+              ]
+            }
+          },
+          "required": [
+            "event_name",
+            "event"
+          ]
+        }
+      },
+      {
+        "ingestion_type": "dimension",
+        "input": {
+          "type": "object",
+          "properties": {
+            "dimension_name": {
+              "type": "string"
+            },
+            "dimension": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "district_id": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "name",
+                "district_id"
+              ]
+            }
+          },
+          "required": [
+            "dimension_name",
+            "dimension"
+          ]
+        }
+      },
+      {
+        "ingestion_type": "dataset",
+        "input": {
+          "type": "object",
+          "properties": {
+            "dataset_name": {
+              "type": "string"
+            },
+            "dataset": {
+              "type": "object",
+              "properties": {
+                "event_name": {
+                  "type": "string"
+                },
+                "dimension_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "school_id",
+                "grade",
+                "count"
+              ]
+            }
+          },
+          "required": [
+            "dataset_name",
+            "dataset"
+          ]
+        }
+      },
+      {
+        "ingestion_type": "pipeline",
+        "input": {
+          "pipeline_name": "string",
+          "type": "string"
+        }
+      }
+    ]
+  }
