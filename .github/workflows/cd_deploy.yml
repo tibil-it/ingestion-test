@@ -1,0 +1,44 @@
+name: Continuous Integration/ Continuous Deployment
+on:
+  pull_request:
+    types:
+      - closed
+    branches: [main]
+
+jobs:
+  if_merged:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+    - name: Docker Login
+      env:
+        DOCKER_USER: ${{secrets.DOCKER_USER}}
+        DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+      run:
+        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+
+    - name: Docker Push
+      env:
+        REPO: ingest-ms
+      run: |
+        docker build -t $REPO .
+        docker tag $REPO:latest ${{secrets.DOCKER_USER}}/$REPO:latest
+        docker push ${{secrets.DOCKER_USER}}/$REPO
+
+    - name: Docker pull image and deploy from hub
+      env:
+        DOCKER_USER: ${{secrets.DOCKER_USER}}
+        DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+        REPO: ingest-ms
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.KEY }}
+        port: ${{ secrets.PORT }}
+        script: |
+          docker login
+          docker pull asifbashaabdul/ingest-ms
+          docker stop ingest_app || true
+          docker rm ingest_app || true
+          docker run -d --name ingest_app -p 3001:3001 asifbashaabdul/ingest-ms
