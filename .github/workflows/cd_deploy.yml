@@ -24,7 +24,7 @@ jobs:
       run: |
         docker build -t $REPO .
         docker tag $REPO:latest tibildocker/$REPO:latest
-        docker push ${{secrets.DOCKER_USER}}/$REPO
+        docker push tibildocker/$REPO
 
     - name: Docker pull image and deploy from hub
       env:
