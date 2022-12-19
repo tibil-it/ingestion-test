@@ -15,7 +15,7 @@ jobs:
         DOCKER_USER: ${{secrets.DOCKER_USER}}
         DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
       run:
-        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+        docker login -u tibildocker -p T1b1l@docker
 
     - name: Docker Push
       env:
@@ -38,7 +38,7 @@ jobs:
         port: ${{ secrets.PORT }}
         script: |
           docker login
-          docker pull asifbashaabdul/ingest-ms
+          docker pull tibildocker/ingest-ms
           docker stop ingest_app || true
           docker rm ingest_app || true
-          docker run -d --name ingest_app -p 3001:3001 asifbashaabdul/ingest-ms
+          docker run -d --name ingest_app -p 3001:3001 tibildocker/ingest-ms
