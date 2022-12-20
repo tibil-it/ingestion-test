@@ -42,7 +42,7 @@ jobs:
         DOCKER_USER: ${{secrets.DOCKER_USER}}
         DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
         REPO: ingest-ms
-      uses: appleboy/ssh-action@master
+      uses: D3rHase/ssh-command-action@{version}
       with:
         HOST: ${{ secrets.HOST }}
         USERNAME: ${{ secrets.USERNAME }}
