@@ -38,17 +38,16 @@ jobs:
           #docker push tibildocker/$REPO
 
     - name: Docker pull image and deploy from hub
-      runs-on: ubuntu-latest
       env:
         DOCKER_USER: ${{secrets.DOCKER_USER}}
         DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
         REPO: ingest-ms
       uses: appleboy/ssh-action@master
       with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.KEY }}
-        port: ${{ secrets.PORT }}
+        HOST: ${{ secrets.HOST }}
+        USERNAME: ${{ secrets.USERNAME }}
+        KEY: ${{ secrets.KEY }}
+        PORT: ${{ secrets.PORT }}
         script: |
           docker login
           docker pull tibildocker/ingest-ms
