@@ -42,7 +42,6 @@ jobs:
         DOCKER_USER: ${{secrets.DOCKER_USER}}
         DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
         REPO: ingest-ms
-      environment:
       uses: appleboy/ssh-action@master
       with:
         HOST: ${{ secrets.HOST }}
