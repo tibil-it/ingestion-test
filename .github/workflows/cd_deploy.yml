@@ -47,7 +47,7 @@ jobs:
         HOST: ${{ secrets.HOST }}
         USERNAME: ${{ secrets.USERNAME }}
         KEY: ${{ secrets.KEY }}
-        PORT: ${{ secrets.PORT }}
+        PORT: '22'
         script: |
           docker login
           docker pull tibildocker/ingest-ms
