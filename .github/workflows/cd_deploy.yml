@@ -38,6 +38,7 @@ jobs:
           #docker push tibildocker/$REPO
 
     - name: Docker pull image and deploy from hub
+      runs-on: ubuntu-latest
       env:
         DOCKER_USER: ${{secrets.DOCKER_USER}}
         DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
