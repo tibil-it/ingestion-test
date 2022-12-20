@@ -22,13 +22,20 @@ jobs:
           #run:
           #docker login -u tibildocker -p T1b1l@docker
 
-    - name: Docker Push
-      env:
-        REPO: ingest-ms
-      run: |
-        docker build -t $REPO .
-        docker tag $REPO:latest tibildocker/$REPO:latest
-        docker push tibildocker/$REPO
+    - name: Build and push
+      uses: docker/login-action@v2
+      with:
+        context: .
+        push: true
+        tags: tibildocker/ingest-ms:latest
+
+          #- name: Docker Push
+          #env:
+          #REPO: ingest-ms
+          #run: |
+          #docker build -t $REPO .
+          #docker tag $REPO:latest tibildocker/$REPO:latest
+          #docker push tibildocker/$REPO
 
     - name: Docker pull image and deploy from hub
       env:
