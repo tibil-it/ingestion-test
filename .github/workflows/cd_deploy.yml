@@ -44,10 +44,10 @@ jobs:
         REPO: ingest-ms
       uses: appleboy/ssh-action@master
       with:
-        HOST: ${{ secrets.HOST }}
-        USERNAME: ${{ secrets.USERNAME }}
-        KEY: ${{ secrets.KEY }}
-        PORT: 22
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        private_key: ${{ secrets.KEY }}
+        port: 22
         script: |
           docker login
           docker pull tibildocker/ingest-ms
