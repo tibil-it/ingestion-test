@@ -13,5 +13,5 @@ jobs:
     - name: Node LTS versions
       uses: msimerson/node-lts-versions@v1.1.1
     - run: npm install --force
-    - run: npm test --ci --coverage
-    - run: npm run build --if-present
+      #    - run: npm test --ci --coverage
+    - run: npm run start
