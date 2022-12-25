@@ -14,4 +14,5 @@ jobs:
       uses: msimerson/node-lts-versions@v1.1.1
     - run: npm install --force
       #    - run: npm test --ci --coverage
+      #    test
     - run: npm run start
