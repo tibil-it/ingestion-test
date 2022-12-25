@@ -14,8 +14,8 @@ jobs:
     - name: Docker Login
       uses: docker/login-action@v2
       with:
-        username: tibildocker
-        password: T1b1l@docker
+        username: ${{secrets.DOCKER_USER}}
+        password: ${{secrets.DOCKER_PASSWORD}}
           #env:
           #DOCKER_USER: ${{secrets.DOCKER_USER}}
           # DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
@@ -25,9 +25,10 @@ jobs:
     - name: Build and push
       uses: docker/build-push-action@v3
       with:
+        username: ${{secrets.DOCKER_USER}}
         context: .
         push: true
-        tags: tibildocker/ingest-ms:latest
+        tags: ${{secrets.DOCKER_USER}}/ingest-ms:latest
 
           #- name: Docker Push
           #env:
@@ -47,10 +48,11 @@ jobs:
         HOST: ${{ secrets.HOST }}
         USERNAME: ${{ secrets.USERNAME }}
         KEY: ${{ secrets.KEY }}
-        PORT: '22'
+        PORT: ${{ secrets.PORT }}
         script: |
           docker login
           docker pull tibildocker/ingest-ms
           docker stop ingest_app || true
           docker rm ingest_app || true
+          docker rmi ingest-ms:latest || true
           docker run -d --name ingest_app -p 3001:3001 tibildocker/ingest-ms
