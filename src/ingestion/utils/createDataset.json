@@ -1,0 +1,35 @@
+[
+    {
+  
+          "name": "IfDatasetNameIsEmpty",
+          "description": "If Dataset Name Is Empty",
+          "function_name": "createDataset",
+          "input": {
+            "body":{
+                "dataset_name": "",
+                "dataset": {
+                    "school_id": "101",
+                    "grade": "1",
+                    "student_count": "10"
+                }
+            }
+          },
+          "output": "No Dataset Found"
+        
+    },
+    {
+      "name": "IfDatasetObjectIsEmpty",
+      "description": "If Dataset Object is empty",
+      "function_name": "executeQueryAndReturnResults",
+      "input": {
+        "body":{
+            "dataset_name": "Teacher Attendance",
+            "dataset": {
+               
+            }
+        }
+      },
+      "output": "No Dataset Found"
+    }
+    
+  ]

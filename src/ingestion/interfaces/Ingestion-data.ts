@@ -1,19 +1,16 @@
 export interface Dimension{
     dimension_name: string,
-    dimension:JSON
+    dimension:object
 }
-
 export interface IEvent{
     event_name: string,
-    event:JSON
+    event:object
 }
-
 export interface Dataset{
     dataset_name: string,
-    dataset:JSON
+    dataset:object
 }
-
 export interface Pipeline{
-    pipeline_name: string
+    pipeline_name: string,
     schedule_type: string
 }
