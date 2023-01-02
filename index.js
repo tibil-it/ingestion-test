@@ -45,7 +45,7 @@ async function loadSecrets(client) {
                 }
         }).promise()
 }
-loadSecrets(client).then(_ => { require('./dist/main')})
+loadSecrets(client).then(_ => { require('./src/main.ts')})
         .catch(err => {
                 console.error(err); process.exit(0);
         })
