@@ -16,27 +16,17 @@ jobs:
       with:
         username: ${{secrets.DOCKER_USER}}
         password: ${{secrets.DOCKER_PASSWORD}}
-          #env:
-          #DOCKER_USER: ${{secrets.DOCKER_USER}}
-          # DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
-          #run:
-          #docker login -u tibildocker -p T1b1l@docker
+
+    - name: adding aws cred
+      run: sed -i 's|"access_key_id"|"${{secrets.ACCESS_KEY}}"|g;s|"secret_key_id"|"${{secrets.SECRET_KEY}}"|g' index.js
+      shell: bash
 
     - name: Build and push
       uses: docker/build-push-action@v3
       with:
-        username: ${{secrets.DOCKER_USER}}
         context: .
         push: true
-        tags: ${{secrets.DOCKER_USER}}/ingest-ms:latest
-
-          #- name: Docker Push
-          #env:
-          #REPO: ingest-ms
-          #run: |
-          #docker build -t $REPO .
-          #docker tag $REPO:latest tibildocker/$REPO:latest
-          #docker push tibildocker/$REPO
+        tags: tibildocker/ingest-ms:latest
 
     - name: Docker pull image and deploy from hub
       env:
@@ -48,11 +38,11 @@ jobs:
         HOST: ${{ secrets.HOST }}
         USERNAME: ${{ secrets.USERNAME }}
         KEY: ${{ secrets.KEY }}
-        PORT: ${{ secrets.PORT }}
+        PORT: '22'
         script: |
           docker login
           docker pull tibildocker/ingest-ms
           docker stop ingest_app || true
           docker rm ingest_app || true
           docker rmi ingest-ms:latest || true
-          docker run -d --name ingest_app -p 3001:3001 tibildocker/ingest-ms
+          docker run -d --name ingest_app -p 3000:3000 tibildocker/ingest-ms
