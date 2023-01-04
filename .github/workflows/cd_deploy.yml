@@ -25,6 +25,7 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         context: .
+        file: ./dev.Dockerfile
         push: true
         tags: tibildocker/ingest-ms:1
 
