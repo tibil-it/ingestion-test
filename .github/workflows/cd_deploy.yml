@@ -36,7 +36,7 @@ jobs:
         REPO: ingest-ms
       uses: appleboy/ssh-action@master
       with:
-        HOST: ${{ secrets.HOST }}
+        HOST: 35.154.229.40
         USERNAME: ${{ secrets.USERNAME }}
         KEY: ${{ secrets.KEY }}
         PORT: '22'
