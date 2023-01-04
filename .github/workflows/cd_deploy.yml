@@ -37,7 +37,11 @@ jobs:
         host: 35.154.229.40
       uses: appleboy/ssh-action@master
       with:
+<<<<<<< HEAD
         HOST: ${{host}}
+=======
+        HOST: $host
+>>>>>>> 437542c595b2fc352c1ddc2f44e9d5ba6b7525b5
         USERNAME: ${{ secrets.USERNAME }}
         KEY: ${{ secrets.KEY }}
         PORT: '22'
