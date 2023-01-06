@@ -21,6 +21,6 @@ jobs:
           package-manager: npm
           test-script: npm run test:cov
     - name: Code Coverage Summary Report
-    - uses: irongut/CodeCoverageSummary@v1.3.0
+      uses: irongut/CodeCoverageSummary@v1.3.0
       with:
-        filename: clover.xml
+          filename: clover.xml
