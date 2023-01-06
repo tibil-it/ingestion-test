@@ -20,7 +20,11 @@ jobs:
           threshold: 80
           package-manager: npm
           test-script: npm run test:cov
-    - name: Code Coverage Summary Report
-      uses: irongut/CodeCoverageSummary@v1.3.0
+            #- name: Code Coverage Summary Report
+            #uses: irongut/CodeCoverageSummary@v1.3.0
+            # with:
+            #filename: coverage/**/coverage.clover.xml
+    - name: Jest Code Coverage Report
+      uses: ziishaned/jest-reporter-action@0.1.1
       with:
-          filename: coverage/**/coverage.clover.xml
+        github-token: ${{ secrets.GITHUB_TOKEN }}
