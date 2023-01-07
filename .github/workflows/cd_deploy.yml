@@ -3,7 +3,7 @@ on:
   pull_request_target:
     types:
       - closed
-    branches: [main]
+    branches: [mai]
 
 jobs:
   if_merged:
