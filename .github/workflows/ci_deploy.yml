@@ -27,3 +27,8 @@ jobs:
     - uses: marocchino/sticky-pull-request-comment@v2
       with:
         message: ${{ steps.coverage.outputs.report }}
+        #github-token: ${{ secrets.GITHUB_TOKEN }}
+        #clover-file: ./coverage/clover.xml
+          # uses: ziishaned/jest-reporter-action@0.1.1
+          #with:
+          #github-token: ${{ secrets.GITHUB_TOKEN }}
