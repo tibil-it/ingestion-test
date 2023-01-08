@@ -14,21 +14,9 @@ jobs:
       uses: msimerson/node-lts-versions@v1.1.1
     - run: npm install --force
     - run: npm test --ci --coverage
-    - uses: artiomtr/jest-coverage-report-action@v2.0-rc.1
-      with:
+    - name: Tests
+        run: yarn test:cov
+    - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          threshold: 80
-          package-manager: npm
-          test-script: npm run test:cov
-    - uses: ArtiomTr/jest-coverage-report-action@v2
-      id: coverage
-      with:
-        output: report-markdown
-    - uses: marocchino/sticky-pull-request-comment@v2
-      with:
-        message: ${{ steps.coverage.outputs.report }}
-        #github-token: ${{ secrets.GITHUB_TOKEN }}
-        #clover-file: ./coverage/clover.xml
-          # uses: ziishaned/jest-reporter-action@0.1.1
-          #with:
-          #github-token: ${{ secrets.GITHUB_TOKEN }}
