@@ -25,3 +25,9 @@ jobs:
       with:
         github-token: ${{ secrets.github_token }}
         parallel-finished: true
+        filename: coverage/**/coverage.clover.xml
+        #github-token: ${{ secrets.GITHUB_TOKEN }}
+        #clover-file: ./coverage/clover.xml
+          # uses: ziishaned/jest-reporter-action@0.1.1
+          #with:
+          #github-token: ${{ secrets.GITHUB_TOKEN }}
