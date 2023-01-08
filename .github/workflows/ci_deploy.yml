@@ -20,8 +20,10 @@ jobs:
           threshold: 80
           package-manager: npm
           test-script: npm run test:cov
-    - name: Coveralls Finished
-      uses: coverallsapp/github-action@master
+    - uses: ArtiomTr/jest-coverage-report-action@v2
+      id: coverage
       with:
-        github-token: ${{ secrets.github_token }}
-        parallel-finished: true
+        output: report-markdown
+    - uses: marocchino/sticky-pull-request-comment@v2
+      with:
+        message: ${{ steps.coverage.outputs.report }}
