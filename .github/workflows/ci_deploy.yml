@@ -15,8 +15,8 @@ jobs:
     - run: npm install --force
     - run: npm test --ci --coverage
     - name: Tests
-        run: yarn test:cov
+      run: npm test:cov
     - name: Coveralls
-        uses: coverallsapp/github-action@master
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
