@@ -27,8 +27,9 @@ jobs:
     - name: Jest Code Coverage Report
       uses: danhunsaker/clover-reporter-action@v0.2.17-clover
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        clover-file: ./coverage/clover.xml
+        filename: coverage/**/coverage.clover.xml
+        #github-token: ${{ secrets.GITHUB_TOKEN }}
+        #clover-file: ./coverage/clover.xml
           # uses: ziishaned/jest-reporter-action@0.1.1
           #with:
           #github-token: ${{ secrets.GITHUB_TOKEN }}
