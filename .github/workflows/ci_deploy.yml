@@ -23,9 +23,9 @@ jobs:
           package-manager: npm
           test-script: npm run test:cov
     - name: Upload coverage report
-        uses: actions/upload-coverage-action@v1
-        with:
-          path: coverage/lcov.info      
+      uses: actions/upload-coverage-action@v1
+      with:
+        path: coverage/lcov.info      
 
           #- name: Code Coverage Report
           #uses: coverallsapp/github-action@master 
