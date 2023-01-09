@@ -24,7 +24,7 @@ jobs:
           test-script: npm run test:cov
 
     - name: Code Coverage Report
-      uses: irongut/CodeCoverageSummary@v1.3.0
+      uses: coverallsapp/github-action@master 
       with:
         path-to-lcov: ./coverage/lcov.info
         badge: true
