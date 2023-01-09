@@ -19,7 +19,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           threshold: 80
           package-manager: npm
-         test-script: npm run test:cov
+          test-script: npm run test:cov
 
     - name: Coveralls
       uses: coverallsapp/github-action@master
