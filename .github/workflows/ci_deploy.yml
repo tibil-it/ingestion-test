@@ -22,32 +22,28 @@ jobs:
           threshold: 80
           package-manager: npm
           test-script: npm run test:cov
-    - name: Upload coverage report
-      uses: actions/upload-coverage-action@v1
+
+    - name: Code Coverage Report
+      uses: coverallsapp/github-action@master 
       with:
-        path: coverage/lcov.info      
+        github-token: ${{ secrets.github_token }}      
+        path-to-lcov: ./coverage/lcov.info
+        badge: true
+        fail_below_min: true
+        format: markdown
+        hide_branch_rate: false
+        hide_complexity: true
+        indicators: true
+        output: both
+        thresholds: '60 80'
 
-          #- name: Code Coverage Report
-          #uses: coverallsapp/github-action@master 
-          #with:
-          #github-token: ${{ secrets.github_token }}      
-          #path-to-lcov: ./coverage/lcov.info
-          #badge: true
-          #fail_below_min: true
-          #format: markdown
-          # hide_branch_rate: false
-          # hide_complexity: true
-          # indicators: true
-          # output: both
-          # thresholds: '60 80'
-
-          #  - name: Add Coverage PR Comment
-          # uses: coverallsapp/github-action@master
-          # if: github.event_name == 'pull_request'
-          # with:
-          # github-token: ${{ secrets.github_token }}      
-          #recreate: true
-          #path: code-coverage-results.md
+    - name: Add Coverage PR Comment
+      uses: coverallsapp/github-action@master
+      if: github.event_name == 'pull_request'
+      with:
+        github-token: ${{ secrets.github_token }}      
+        recreate: true
+        path: code-coverage-results.md
 
           #- name: Coveralls
       #uses: coverallsapp/github-action@master
