@@ -14,8 +14,12 @@ jobs:
       uses: msimerson/node-lts-versions@v1.1.1
     - run: npm install --force
     - run: npm test --ci --coverage
-    - name: Tests
-      run: npm test:cov
+    - uses: artiomtr/jest-coverage-report-action@v2.0-rc.1
+      with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          threshold: 80
+          package-manager: npm
+         test-script: npm run test:cov
     - name: Coveralls
       uses: coverallsapp/github-action@master
       with:
