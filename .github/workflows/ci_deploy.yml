@@ -26,6 +26,7 @@ jobs:
     - name: Code Coverage Report
       uses: coverallsapp/github-action@master 
       with:
+        github-token: ${{ secrets.github_token }}      
         path-to-lcov: ./coverage/lcov.info
         badge: true
         fail_below_min: true
